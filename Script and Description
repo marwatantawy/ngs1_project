@@ -62,24 +62,18 @@ mv stdin.part_003.fastq SS3_2.fastq
 mv stdin.part_004.fastq SS4_2.fastq
 mv stdin.part_005.fastq SS5_2.fastq
 
-### to 
-mkdir fastqc_report1/
-
-fastqc *.fastq -o fastqc_report1/
-
-mkdir fastqc_report2/
-
-fastqc *.fastq -o fastqc_report2/
-
-
-### or
-
+### FASTQ Quality Control
+## for sample 1 before shuffling
 source activate ngs1
 fastqc
-mkdir ~/workdir2/FASTQC_report && cd ~/workdir2/FASTQC_report
-for f in ~/workdir2/fqdata/*.fastq;do
-fastqc -t 1 -f fastq -noextract $f;done
-multiqc -z -o . .
+mkdir fastqc_report1/
+fastqc *.fastq -o fastqc_report1/
+
+## for sample 1 after shuffling
+source activate ngs1
+fastqc
+mkdir fastqc_report2/
+fastqc *.fastq -o fastqc_report2/
 
 
 source activate ngs1
