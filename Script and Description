@@ -111,3 +111,23 @@ trimmomatic PE -trimlog trimlogfile_agg_2 -summary statSummaryFile_agg_2 SS1_1.f
 #Dropped Reads: 710
 #Dropped Read Percent: 0.07
 ####################################################
+5- Alignment
+### BWA for unshuffled samples
+source activate ngs1
+conda install -c bioconda bwa 
+
+#### index genome
+
+mkdir -p ~/workdir2/bwa_align/bwaIndex && cd ~/workdir2/bwa_align/bwaIndex
+ln -s ~/workdir2/unshuffled_R1.fastq .
+bwa index -a bwtsw unshuffled_R1.fastq 
+
+ln -s ~/workdir2/unshuffled_R2.fastq .
+bwa index -a bwtsw unshuffled_R2.fastq 
+#### sequence alignment
+
+cd ~/workdir/bwa_align2
+R1="$HOME/workdir2/S1_1_paired.fq.gz"
+R2="$HOME/workdir2/S1_2_paired.fq.gz"
+/usr/bin/time -v bwa mem bwaIndex2/unshuffled_R1.fastq $R1 $R2 > unshuffled_R1.sam
+
