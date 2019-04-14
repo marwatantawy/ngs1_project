@@ -133,7 +133,6 @@ trimmomatic PE -trimlog trimlogfile_agg_5 -summary statSummaryFile_agg_5 SS5_1.f
 #Dropped Reads: 710
 #Dropped Read Percent: 0.07
 ####################################################
-
 5- Alignment
 ### BWA for unshuffled samples
 source activate ngs1
@@ -147,8 +146,33 @@ bwa index -a bwtsw chr22_with_ERCC92.fa
 
 #### sequence alignment
 
+# Alignment Sample 1
 cd ~/workdir2/bwa_align
 R1="$HOME/workdir2/S1_1_paired.fq.gz"
 R2="$HOME/workdir2/S1_2_paired.fq.gz"
-/usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > unshuffled_R1.sam
+/usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > S1.sam
+
+# Alignment Sample 2
+cd ~/workdir2/bwa_align
+R1="$HOME/workdir2/S2_1_paired.fq.gz"
+R2="$HOME/workdir2/S2_2_paired.fq.gz"
+/usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > S2.sam
+
+# Alignment Sample 3
+cd ~/workdir2/bwa_align
+R1="$HOME/workdir2/S3_1_paired.fq.gz"
+R2="$HOME/workdir2/S3_2_paired.fq.gz"
+/usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > S3.sam
+
+# Alignment Sample 4
+cd ~/workdir2/bwa_align
+R1="$HOME/workdir2/S4_1_paired.fq.gz"
+R2="$HOME/workdir2/S4_2_paired.fq.gz"
+/usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > S4.sam
+
+# Alignment Sample 5
+cd ~/workdir2/bwa_align
+R1="$HOME/workdir2/S5_1_paired.fq.gz"
+R2="$HOME/workdir2/S5_2_paired.fq.gz"
+/usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > S5.sam
 
