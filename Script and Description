@@ -486,3 +486,46 @@ samtools sort SS5.bam -o SS5.sorted.bam
 source activate ngs1
 conda install stringtie
 
+cd bwaindex
+
+stringtie S1.sorted.bam --rf -l ref_free -o ref_free.gtf
+cat ref_free.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 1537
+
+stringtie S2.sorted.bam --rf -l ref_free -o ref_free.gtf
+cat ref_free.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 1515
+
+stringtie S3.sorted.bam --rf -l ref_free -o ref_free.gtf
+cat ref_free.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 1511
+
+stringtie S4.sorted.bam --rf -l ref_free -o ref_free.gtf
+cat ref_free.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 1534
+
+stringtie S5.sorted.bam --rf -l ref_free -o ref_free.gtf
+cat ref_free.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 1490
+
+cd hisat_align
+
+stringtie SS1.sorted.bam --rf -l ref_free -o ref_free.gtf
+cat ref_free.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 504
+
+stringtie SS2.sorted.bam --rf -l ref_free -o ref_free.gtf
+cat ref_free.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 494
+
+stringtie SS3.sorted.bam --rf -l ref_free -o ref_free.gtf
+cat ref_free.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 489
+
+stringtie SS4.sorted.bam --rf -l ref_free -o ref_free.gtf
+cat ref_free.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 516
+
+stringtie SS5.sorted.bam --rf -l ref_free -o ref_free.gtf
+cat ref_free.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 494
