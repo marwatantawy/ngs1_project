@@ -119,15 +119,13 @@ conda install -c bioconda bwa
 #### index genome
 
 mkdir -p ~/workdir2/bwa_align/bwaIndex && cd ~/workdir2/bwa_align/bwaIndex
-ln -s ~/workdir2/unshuffled_R1.fastq .
-bwa index -a bwtsw unshuffled_R1.fastq 
+ln -s ~/workdir2/sample_data/chr22_with_ERCC92.fa .
+bwa index -a bwtsw chr22_with_ERCC92.fa 
 
-ln -s ~/workdir2/unshuffled_R2.fastq .
-bwa index -a bwtsw unshuffled_R2.fastq 
 #### sequence alignment
 
-cd ~/workdir/bwa_align2
+cd ~/workdir2/bwa_align
 R1="$HOME/workdir2/S1_1_paired.fq.gz"
 R2="$HOME/workdir2/S1_2_paired.fq.gz"
-/usr/bin/time -v bwa mem bwaIndex2/unshuffled_R1.fastq $R1 $R2 > unshuffled_R1.sam
+/usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > unshuffled_R1.sam
 
