@@ -485,7 +485,7 @@ samtools sort SS5.bam -o SS5.sorted.bam
 
 source activate ngs1
 conda install stringtie
-
+## Assembly without known annotations
 cd bwaindex
 
 stringtie S1.sorted.bam --rf -l ref_free -o ref_free.gtf
@@ -529,3 +529,49 @@ cat ref_free.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
 stringtie SS5.sorted.bam --rf -l ref_free -o ref_free.gtf
 cat ref_free.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
 ## 494
+
+## Assembly with known previous annotations
+
+cd bwa_align
+
+stringtie S1.sorted.bam --rf -l ref_sup -G ~/workdir2/sample_data/chr22_with_ERCC92.gtf -o ref_sup.gtf 
+cat ref_sup.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 1581
+
+stringtie S2.sorted.bam --rf -l ref_sup -G ~/workdir2/sample_data/chr22_with_ERCC92.gtf -o ref_sup.gtf 
+cat ref_sup.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 1583
+
+stringtie S3.sorted.bam --rf -l ref_sup -G ~/workdir2/sample_data/chr22_with_ERCC92.gtf -o ref_sup.gtf 
+cat ref_sup.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 1555
+
+stringtie S4.sorted.bam --rf -l ref_sup -G ~/workdir2/sample_data/chr22_with_ERCC92.gtf -o ref_sup.gtf 
+cat ref_sup.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 1584
+
+stringtie S5.sorted.bam --rf -l ref_sup -G ~/workdir2/sample_data/chr22_with_ERCC92.gtf -o ref_sup.gtf 
+cat ref_sup.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 1533
+
+cd hisat_align
+
+stringtie SS1.sorted.bam --rf -l ref_sup -G ~/workdir2/sample_data/chr22_with_ERCC92.gtf -o ref_sup.gtf 
+cat ref_sup.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 961
+
+stringtie SS2.sorted.bam --rf -l ref_sup -G ~/workdir2/sample_data/chr22_with_ERCC92.gtf -o ref_sup.gtf 
+cat ref_sup.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 941
+
+stringtie SS3.sorted.bam --rf -l ref_sup -G ~/workdir2/sample_data/chr22_with_ERCC92.gtf -o ref_sup.gtf 
+cat ref_sup.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 960
+
+stringtie SS4.sorted.bam --rf -l ref_sup -G ~/workdir2/sample_data/chr22_with_ERCC92.gtf -o ref_sup.gtf 
+cat ref_sup.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 990
+
+stringtie SS5.sorted.bam --rf -l ref_sup -G ~/workdir2/sample_data/chr22_with_ERCC92.gtf -o ref_sup.gtf 
+cat ref_sup.gtf | grep -v "^@" | awk '$3=="transcript"' | wc -l
+## 936
