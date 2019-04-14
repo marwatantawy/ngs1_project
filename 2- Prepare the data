@@ -1,0 +1,60 @@
+2- Prepare the data
+### Install sra-toolkit
+### extract sra-toolkit
+fastq-dump SRR8797509.sra
+cd sratoolkit.2.9.6-ubuntu64/
+ls
+cd bin
+ls
+### convert data file from sra to fastq with split R1 and R2
+./fastq-dump --split-3 ../../SRR8797509.sra 
+head -n 10 SRR8797509.fastq
+
+### Extract 5000000 R1 and R1 without shuffling
+cat SRR8797509_1.fastq | seqkit head -n 5000000 > unshuffled_R1.fastq
+cat SRR8797509_2.fastq | seqkit head -n 5000000 > unshuffled_R2.fastq
+
+### Split each 1000000 to be one sample with R1 and R2 before shuffling
+cat unshuffled_R1.fastq | seqkit split2 -s 1000000
+cat unshuffled_R2.fastq | seqkit split2 -s 1000000
+
+### to check splitting file
+cd stdin.split/
+cat stdin.part_001.fastq  | wc -l
+
+### to shuffle fastq file R1 and R2
+./seqkit shuffle -h
+./seqkit shuffle ../unshuffled_R1.fastq > ../shuffled_R1.fastq 
+./seqkit shuffle ../unshuffled_R2.fastq > ../shuffled_R2.fastq 
+
+### Split each 1000000 to be one sample with R1 and R2 after shuffling
+cat ../shuffled_R1.fastq | ./seqkit split2 -s 1000000
+cat ../shuffled_R2.fastq | ./seqkit split2 -s 1000000
+
+### To rename splitted files of unshuffle R1 (S1_1 ) and R2 (S1_2)
+cd unsuffled_R1
+mv stdin.part_001.fastq S1_1.fastq
+mv stdin.part_002.fastq S2_1.fastq
+mv stdin.part_003.fastq S3_1.fastq
+mv stdin.part_004.fastq S4_1.fastq
+mv stdin.part_005.fastq S5_1.fastq
+cd unsuffle_R2
+mv stdin.part_001.fastq S1_2.fastq
+mv stdin.part_002.fastq S2_2.fastq
+mv stdin.part_003.fastq S3_2.fastq
+mv stdin.part_004.fastq S4_2.fastq
+mv stdin.part_005.fastq S5_2.fastq
+
+### To rename splitted files of shuffled R1 (SS1_1) and R2 (SS1_2)
+cd shuffled_R1
+mv stdin.part_001.fastq SS1_1.fastq
+mv stdin.part_002.fastq SS2_1.fastq
+mv stdin.part_003.fastq SS3_1.fastq
+mv stdin.part_004.fastq SS4_1.fastq
+mv stdin.part_005.fastq SS5_1.fastq
+cd suffled_R2
+mv stdin.part_001.fastq SS1_2.fastq
+mv stdin.part_002.fastq SS2_2.fastq
+mv stdin.part_003.fastq SS3_2.fastq
+mv stdin.part_004.fastq SS4_2.fastq
+mv stdin.part_005.fastq SS5_2.fastq
