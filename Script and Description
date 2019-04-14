@@ -454,17 +454,35 @@ hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 
 source activate ngs1
 conda install samtools
 
-# convert the SAM file into BAM file 
+# convert the SAM file into BAM file (Unshuffled samples)
 samtools view -bS S1.sam > S1.bam
 samtools view -bS S2.sam > S2.bam
 samtools view -bS S3.sam > S3.bam
 samtools view -bS S4.sam > S4.bam
 samtools view -bS S5.sam > S5.bam
+# convert the SAM file into BAM file (Shuffled samples)
+samtools view -bS SS1.sam > SS1.bam
+samtools view -bS SS2.sam > SS2.bam
+samtools view -bS SS3.sam > SS3.bam
+samtools view -bS SS4.sam > SS4.bam
+samtools view -bS SS5.sam > SS5.bam
 
-#convert the BAM file to a sorted BAM file. 
+#convert the BAM file to a sorted BAM file (Unshuffled samples)
 samtools sort S1.bam -o S1.sorted.bam
 samtools sort S2.bam -o S2.sorted.bam
 samtools sort S3.bam -o S3.sorted.bam
 samtools sort S4.bam -o S4.sorted.bam
 samtools sort S5.bam -o S5.sorted.bam
+
+#convert the BAM file to a sorted BAM file (Shuffled samples)
+
+samtools sort SS1.bam -o SS1.sorted.bam
+samtools sort SS2.bam -o SS2.sorted.bam
+samtools sort SS3.bam -o SS3.sorted.bam
+samtools sort SS4.bam -o SS4.sorted.bam
+samtools sort SS5.bam -o SS5.sorted.bam
+## install stringtie
+
+source activate ngs1
+conda install stringtie
 
