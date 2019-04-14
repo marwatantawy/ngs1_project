@@ -206,11 +206,48 @@ R1="$HOME/workdir2/SS1_1_paired_agg.fq.gz"
 R2="$HOME/workdir2/SS1_2_paired_agg.fq.gz"
 hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS1.sam
 
+### Alignment summary Sample 1
+
+
+986086 reads; of these:
+  986086 (100.00%) were paired; of these:
+    958959 (97.25%) aligned concordantly 0 times
+    26730 (2.71%) aligned concordantly exactly 1 time
+    397 (0.04%) aligned concordantly >1 times
+    ----
+    958959 pairs aligned concordantly 0 times; of these:
+      57 (0.01%) aligned discordantly 1 time
+    ----
+    958902 pairs aligned 0 times concordantly or discordantly; of these:
+      1917804 mates make up the pairs; of these:
+        1912690 (99.73%) aligned 0 times
+        4949 (0.26%) aligned exactly 1 time
+        165 (0.01%) aligned >1 times
+3.02% overall alignment rate
+
 ## sample  2
 cd ~/workdir2/hisat_align
 R1="$HOME/workdir2/SS2_1_paired_agg.fq.gz"
 R2="$HOME/workdir2/SS2_2_paired_agg.fq.gz"
 hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS2.sam
+
+## Alignment Summary Sample 2
+
+986081 reads; of these:
+  986081 (100.00%) were paired; of these:
+    958632 (97.22%) aligned concordantly 0 times
+    27015 (2.74%) aligned concordantly exactly 1 time
+    434 (0.04%) aligned concordantly >1 times
+    ----
+    958632 pairs aligned concordantly 0 times; of these:
+      55 (0.01%) aligned discordantly 1 time
+    ----
+    958577 pairs aligned 0 times concordantly or discordantly; of these:
+      1917154 mates make up the pairs; of these:
+        1912040 (99.73%) aligned 0 times
+        4948 (0.26%) aligned exactly 1 time
+        166 (0.01%) aligned >1 times
+3.05% overall alignment rate
 
 ## sample  3
 cd ~/workdir2/hisat_align
@@ -218,11 +255,50 @@ R1="$HOME/workdir2/SS3_1_paired_agg.fq.gz"
 R2="$HOME/workdir2/SS3_2_paired_agg.fq.gz"
 hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS3.sam
 
+
+## Alignment Summary sample 3
+
+
+985989 reads; of these:
+  985989 (100.00%) were paired; of these:
+    958252 (97.19%) aligned concordantly 0 times
+    27298 (2.77%) aligned concordantly exactly 1 time
+    439 (0.04%) aligned concordantly >1 times
+    ----
+    958252 pairs aligned concordantly 0 times; of these:
+      62 (0.01%) aligned discordantly 1 time
+    ----
+    958190 pairs aligned 0 times concordantly or discordantly; of these:
+      1916380 mates make up the pairs; of these:
+        1911116 (99.73%) aligned 0 times
+        5082 (0.27%) aligned exactly 1 time
+        182 (0.01%) aligned >1 times
+3.09% overall alignment rate
+
 ## sample  4
 cd ~/workdir2/hisat_align
 R1="$HOME/workdir2/SS4_1_paired_agg.fq.gz"
 R2="$HOME/workdir2/SS4_2_paired_agg.fq.gz"
 hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS4.sam
+
+## Alignment Summary sample 4
+
+986029 reads; of these:
+  986029 (100.00%) were paired; of these:
+    958452 (97.20%) aligned concordantly 0 times
+    27170 (2.76%) aligned concordantly exactly 1 time
+    407 (0.04%) aligned concordantly >1 times
+    ----
+    958452 pairs aligned concordantly 0 times; of these:
+      43 (0.00%) aligned discordantly 1 time
+    ----
+    958409 pairs aligned 0 times concordantly or discordantly; of these:
+      1916818 mates make up the pairs; of these:
+        1911599 (99.73%) aligned 0 times
+        5042 (0.26%) aligned exactly 1 time
+        177 (0.01%) aligned >1 times
+3.07% overall alignment rate
+
 
 ## sample  5
 cd ~/workdir2/hisat_align
@@ -230,4 +306,20 @@ R1="$HOME/workdir2/SS5_1_paired_agg.fq.gz"
 R2="$HOME/workdir2/SS5_2_paired_agg.fq.gz"
 hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS5.sam
 
-==================================================================================================
+## Alignment Summary Sample 5
+
+986217 reads; of these:
+  986217 (100.00%) were paired; of these:
+    959053 (97.25%) aligned concordantly 0 times
+    26745 (2.71%) aligned concordantly exactly 1 time
+    419 (0.04%) aligned concordantly >1 times
+    ----
+    959053 pairs aligned concordantly 0 times; of these:
+      68 (0.01%) aligned discordantly 1 time
+    ----
+    958985 pairs aligned 0 times concordantly or discordantly; of these:
+      1917970 mates make up the pairs; of these:
+        1912820 (99.73%) aligned 0 times
+        4970 (0.26%) aligned exactly 1 time
+        180 (0.01%) aligned >1 times
+3.02% overall alignment rate
