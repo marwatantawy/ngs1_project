@@ -143,13 +143,13 @@ wget http://genomedata.org/rnaseq-tutorial/annotations/GRCh38/chr22_with_ERCC92.
 source activate ngs1
 conda install -c bioconda bwa 
 
-#### index genome
+#### Indexing
 
 mkdir -p ~/workdir2/bwa_align/bwaIndex && cd ~/workdir2/bwa_align/bwaIndex
 ln -s ~/workdir2/sample_data/chr22_with_ERCC92.fa .
 bwa index -a bwtsw chr22_with_ERCC92.fa 
 
-#### sequence alignment
+#### 1- BWA sequence alignment
 
 # Alignment Sample 1
 cd ~/workdir2/bwa_align
@@ -181,11 +181,55 @@ R1="$HOME/workdir2/S5_1_paired.fq.gz"
 R2="$HOME/workdir2/S5_2_paired.fq.gz"
 /usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > S5.sam
 
-### Hisat Alignment for shuffled samples
+### 2- Hisat Alignment for shuffled samples
 
-cd ~/workdir/sample_data
+cd ~/workdir2/sample_data
 wget http://genomedata.org/rnaseq-tutorial/fasta/GRCh38/chr22_with_ERCC92.fa
 wget http://genomedata.org/rnaseq-tutorial/annotations/GRCh38/chr22_with_ERCC92.gtf
+
+source activate ngs1
+conda install -c bioconda hisat2 
+
+## Indexing
+
+mkdir -p ~/workdir2/hisat_align/hisatIndex && cd ~/workdir2/hisat_align/hisatIndex
+ln -s ~/workdir2/sample_data/chr22_with_ERCC92.fa .
+hisat2_extract_splice_sites.py ~/workdir2/sample_data/chr22_with_ERCC92.gtf > splicesites.tsv
+hisat2_extract_exons.py ~/workdir2/sample_data/chr22_with_ERCC92.gtf > exons.tsv
+hisat2-build -p 1 --ss splicesites.tsv --exon exons.tsv chr22_with_ERCC92.fa chr22_with_ERCC92
+
+## Hisat Alignment
+
+## sample  1 
+cd ~/workdir2/hisat_align
+R1="$HOME/workdir2/SS1_1_paired_agg.fq.gz"
+R2="$HOME/workdir2/SS1_2_paired_agg.fq.gz"
+hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS1.sam
+
+## sample  2
+cd ~/workdir2/hisat_align
+R1="$HOME/workdir2/SS2_1_paired_agg.fq.gz"
+R2="$HOME/workdir2/SS2_2_paired_agg.fq.gz"
+hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS2.sam
+
+## sample  3
+cd ~/workdir2/hisat_align
+R1="$HOME/workdir2/SS3_1_paired_agg.fq.gz"
+R2="$HOME/workdir2/SS3_2_paired_agg.fq.gz"
+hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS3.sam
+
+## sample  4
+cd ~/workdir2/hisat_align
+R1="$HOME/workdir2/SS4_1_paired_agg.fq.gz"
+R2="$HOME/workdir2/SS4_2_paired_agg.fq.gz"
+hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS4.sam
+
+## sample  5
+cd ~/workdir2/hisat_align
+R1="$HOME/workdir2/SS5_1_paired_agg.fq.gz"
+R2="$HOME/workdir2/SS5_2_paired_agg.fq.gz"
+hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS5.sam
+
 
 source activate ngs1
 conda install -c bioconda hisat2 
