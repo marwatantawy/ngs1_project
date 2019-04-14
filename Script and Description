@@ -135,6 +135,11 @@ trimmomatic PE -trimlog trimlogfile_agg_5 -summary statSummaryFile_agg_5 SS5_1.f
 ####################################################
 5- Alignment
 ### BWA for unshuffled samples
+
+cd ~/workdir/sample_data
+wget http://genomedata.org/rnaseq-tutorial/fasta/GRCh38/chr22_with_ERCC92.fa
+wget http://genomedata.org/rnaseq-tutorial/annotations/GRCh38/chr22_with_ERCC92.gtf
+
 source activate ngs1
 conda install -c bioconda bwa 
 
@@ -176,3 +181,14 @@ R1="$HOME/workdir2/S5_1_paired.fq.gz"
 R2="$HOME/workdir2/S5_2_paired.fq.gz"
 /usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > S5.sam
 
+### Hisat Alignment for shuffled samples
+
+cd ~/workdir/sample_data
+wget http://genomedata.org/rnaseq-tutorial/fasta/GRCh38/chr22_with_ERCC92.fa
+wget http://genomedata.org/rnaseq-tutorial/annotations/GRCh38/chr22_with_ERCC92.gtf
+
+source activate ngs1
+conda install -c bioconda hisat2 
+ 
+source activate ngs1
+conda install -c bioconda hisat2 
