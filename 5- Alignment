@@ -1,0 +1,315 @@
+5- Alignment
+### BWA for unshuffled samples
+
+cd ~/workdir/sample_data
+wget http://genomedata.org/rnaseq-tutorial/fasta/GRCh38/chr22_with_ERCC92.fa
+wget http://genomedata.org/rnaseq-tutorial/annotations/GRCh38/chr22_with_ERCC92.gtf
+
+source activate ngs1
+conda install -c bioconda bwa 
+
+#### Indexing
+
+mkdir -p ~/workdir2/bwa_align/bwaIndex && cd ~/workdir2/bwa_align/bwaIndex
+ln -s ~/workdir2/sample_data/chr22_with_ERCC92.fa .
+bwa index -a bwtsw chr22_with_ERCC92.fa 
+
+#### 1- BWA sequence alignment
+
+# Alignment Sample 1
+cd ~/workdir2/bwa_align
+R1="$HOME/workdir2/S1_1_paired.fq.gz"
+R2="$HOME/workdir2/S1_2_paired.fq.gz"
+/usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > S1.sam
+## Alignment Summary Sample 1
+
+User time (seconds): 378.50
+	System time (seconds): 1.32
+	Percent of CPU this job got: 101%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:15.81
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 189408
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 289263
+	Voluntary context switches: 3183
+	Involuntary context switches: 1022
+	Swaps: 0
+	File system inputs: 256976
+	File system outputs: 1393488
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+# Alignment Sample 2
+cd ~/workdir2/bwa_align
+R1="$HOME/workdir2/S2_1_paired.fq.gz"
+R2="$HOME/workdir2/S2_2_paired.fq.gz"
+/usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > S2.sam
+## Alignment Summary sample 2
+
+User time (seconds): 371.37
+	System time (seconds): 1.34
+	Percent of CPU this job got: 101%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:08.80
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 187888
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 292746
+	Voluntary context switches: 2692
+	Involuntary context switches: 1018
+	Swaps: 0
+	File system inputs: 254808
+	File system outputs: 1399552
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+
+
+# Alignment Sample 3
+cd ~/workdir2/bwa_align
+R1="$HOME/workdir2/S3_1_paired.fq.gz"
+R2="$HOME/workdir2/S3_2_paired.fq.gz"
+/usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > S3.sam
+## Alignment Summary Sample 3
+
+User time (seconds): 373.11
+	System time (seconds): 1.18
+	Percent of CPU this job got: 101%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:10.39
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 188256
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 286970
+	Voluntary context switches: 2913
+	Involuntary context switches: 1130
+	Swaps: 0
+	File system inputs: 255368
+	File system outputs: 1398824
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+
+
+# Alignment Sample 4
+cd ~/workdir2/bwa_align
+R1="$HOME/workdir2/S4_1_paired.fq.gz"
+R2="$HOME/workdir2/S4_2_paired.fq.gz"
+/usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > S4.sam
+## Alignment Summary Sample 4
+
+User time (seconds): 374.10
+	System time (seconds): 1.33
+	Percent of CPU this job got: 101%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:11.38
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 187880
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 288408
+	Voluntary context switches: 2885
+	Involuntary context switches: 1041
+	Swaps: 0
+	File system inputs: 254728
+	File system outputs: 1399264
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+
+
+# Alignment Sample 5
+cd ~/workdir2/bwa_align
+R1="$HOME/workdir2/S5_1_paired.fq.gz"
+R2="$HOME/workdir2/S5_2_paired.fq.gz"
+/usr/bin/time -v bwa mem bwaIndex/chr22_with_ERCC92.fa $R1 $R2 > S5.sam
+
+## Alignment Summary sample 5
+
+User time (seconds): 373.95
+	System time (seconds): 1.37
+	Percent of CPU this job got: 101%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:11.45
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 189532
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 290080
+	Voluntary context switches: 2419
+	Involuntary context switches: 947
+	Swaps: 0
+	File system inputs: 255456
+	File system outputs: 1399536
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+
+
+### 2- Hisat Alignment for shuffled samples
+
+cd ~/workdir2/sample_data
+wget http://genomedata.org/rnaseq-tutorial/fasta/GRCh38/chr22_with_ERCC92.fa
+wget http://genomedata.org/rnaseq-tutorial/annotations/GRCh38/chr22_with_ERCC92.gtf
+
+source activate ngs1
+conda install -c bioconda hisat2 
+
+## Indexing
+
+mkdir -p ~/workdir2/hisat_align/hisatIndex && cd ~/workdir2/hisat_align/hisatIndex
+ln -s ~/workdir2/sample_data/chr22_with_ERCC92.fa .
+hisat2_extract_splice_sites.py ~/workdir2/sample_data/chr22_with_ERCC92.gtf > splicesites.tsv
+hisat2_extract_exons.py ~/workdir2/sample_data/chr22_with_ERCC92.gtf > exons.tsv
+hisat2-build -p 1 --ss splicesites.tsv --exon exons.tsv chr22_with_ERCC92.fa chr22_with_ERCC92
+
+## Hisat Alignment
+
+## sample  1 
+cd ~/workdir2/hisat_align
+R1="$HOME/workdir2/SS1_1_paired_agg.fq.gz"
+R2="$HOME/workdir2/SS1_2_paired_agg.fq.gz"
+hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS1.sam
+
+### Alignment summary Sample 1
+
+
+986086 reads; of these:
+  986086 (100.00%) were paired; of these:
+    958959 (97.25%) aligned concordantly 0 times
+    26730 (2.71%) aligned concordantly exactly 1 time
+    397 (0.04%) aligned concordantly >1 times
+    ----
+    958959 pairs aligned concordantly 0 times; of these:
+      57 (0.01%) aligned discordantly 1 time
+    ----
+    958902 pairs aligned 0 times concordantly or discordantly; of these:
+      1917804 mates make up the pairs; of these:
+        1912690 (99.73%) aligned 0 times
+        4949 (0.26%) aligned exactly 1 time
+        165 (0.01%) aligned >1 times
+3.02% overall alignment rate
+
+## sample  2
+cd ~/workdir2/hisat_align
+R1="$HOME/workdir2/SS2_1_paired_agg.fq.gz"
+R2="$HOME/workdir2/SS2_2_paired_agg.fq.gz"
+hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS2.sam
+
+## Alignment Summary Sample 2
+
+986081 reads; of these:
+  986081 (100.00%) were paired; of these:
+    958632 (97.22%) aligned concordantly 0 times
+    27015 (2.74%) aligned concordantly exactly 1 time
+    434 (0.04%) aligned concordantly >1 times
+    ----
+    958632 pairs aligned concordantly 0 times; of these:
+      55 (0.01%) aligned discordantly 1 time
+    ----
+    958577 pairs aligned 0 times concordantly or discordantly; of these:
+      1917154 mates make up the pairs; of these:
+        1912040 (99.73%) aligned 0 times
+        4948 (0.26%) aligned exactly 1 time
+        166 (0.01%) aligned >1 times
+3.05% overall alignment rate
+
+## sample  3
+cd ~/workdir2/hisat_align
+R1="$HOME/workdir2/SS3_1_paired_agg.fq.gz"
+R2="$HOME/workdir2/SS3_2_paired_agg.fq.gz"
+hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS3.sam
+
+
+## Alignment Summary sample 3
+
+
+985989 reads; of these:
+  985989 (100.00%) were paired; of these:
+    958252 (97.19%) aligned concordantly 0 times
+    27298 (2.77%) aligned concordantly exactly 1 time
+    439 (0.04%) aligned concordantly >1 times
+    ----
+    958252 pairs aligned concordantly 0 times; of these:
+      62 (0.01%) aligned discordantly 1 time
+    ----
+    958190 pairs aligned 0 times concordantly or discordantly; of these:
+      1916380 mates make up the pairs; of these:
+        1911116 (99.73%) aligned 0 times
+        5082 (0.27%) aligned exactly 1 time
+        182 (0.01%) aligned >1 times
+3.09% overall alignment rate
+
+## sample  4
+cd ~/workdir2/hisat_align
+R1="$HOME/workdir2/SS4_1_paired_agg.fq.gz"
+R2="$HOME/workdir2/SS4_2_paired_agg.fq.gz"
+hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS4.sam
+
+## Alignment Summary sample 4
+
+986029 reads; of these:
+  986029 (100.00%) were paired; of these:
+    958452 (97.20%) aligned concordantly 0 times
+    27170 (2.76%) aligned concordantly exactly 1 time
+    407 (0.04%) aligned concordantly >1 times
+    ----
+    958452 pairs aligned concordantly 0 times; of these:
+      43 (0.00%) aligned discordantly 1 time
+    ----
+    958409 pairs aligned 0 times concordantly or discordantly; of these:
+      1916818 mates make up the pairs; of these:
+        1911599 (99.73%) aligned 0 times
+        5042 (0.26%) aligned exactly 1 time
+        177 (0.01%) aligned >1 times
+3.07% overall alignment rate
+
+
+## sample  5
+cd ~/workdir2/hisat_align
+R1="$HOME/workdir2/SS5_1_paired_agg.fq.gz"
+R2="$HOME/workdir2/SS5_2_paired_agg.fq.gz"
+hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS5.sam
+
+## Alignment Summary Sample 5
+
+986217 reads; of these:
+  986217 (100.00%) were paired; of these:
+    959053 (97.25%) aligned concordantly 0 times
+    26745 (2.71%) aligned concordantly exactly 1 time
+    419 (0.04%) aligned concordantly >1 times
+    ----
+    959053 pairs aligned concordantly 0 times; of these:
+      68 (0.01%) aligned discordantly 1 time
+    ----
+    958985 pairs aligned 0 times concordantly or discordantly; of these:
+      1917970 mates make up the pairs; of these:
+        1912820 (99.73%) aligned 0 times
+        4970 (0.26%) aligned exactly 1 time
+        180 (0.01%) aligned >1 times
+3.02% overall alignment rate
+
