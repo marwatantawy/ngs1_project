@@ -1,0 +1,13 @@
+3- FASTQ Quality Control
+### FASTQ Quality Control
+## for sample 1 before shuffling
+source activate ngs1
+fastqc
+mkdir fastqc_report1/
+fastqc *.fastq -o fastqc_report1/
+
+## for sample 1 after shuffling
+source activate ngs1
+fastqc
+mkdir fastqc_report2/
+fastqc *.fastq -o fastqc_report2/
