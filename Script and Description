@@ -453,8 +453,18 @@ hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 
 # install Samtools
 source activate ngs1
 conda install samtools
+
 # convert the SAM file into BAM file 
-samtools view -bS UHR_Rep1.sam > UHR_Rep1.bam
+samtools view -bS S1.sam > S1.bam
+samtools view -bS S2.sam > S2.bam
+samtools view -bS S3.sam > S3.bam
+samtools view -bS S4.sam > S4.bam
+samtools view -bS S5.sam > S5.bam
+
 #convert the BAM file to a sorted BAM file. 
-samtools sort UHR_Rep1.bam -o UHR_Rep1.sorted.bam
+samtools sort S1.bam -o S1.sorted.bam
+samtools sort S2.bam -o S2.sorted.bam
+samtools sort S3.bam -o S3.sorted.bam
+samtools sort S4.bam -o S4.sorted.bam
+samtools sort S5.bam -o S5.sorted.bam
 
