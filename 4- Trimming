@@ -1,0 +1,54 @@
+4- Trimming
+### Trimming
+source activate ngs1
+conda install -c bioconda trimmomatic 
+mkdir trimmednew && cd trimmednew
+
+### Mild trimming for unshuffle samples
+
+## sample 1
+trimmomatic PE -trimlog trimlogfile_1 -summary statSummaryFile_1 S1_1.fastq S1_2.fastq S1_1_paired.fq.gz S1_1_unpaired.fq.gz S1_2_paired.fq.gz S1_2_unpaired.fq.gz ILLUMINACLIP:/home/marwa/miniconda3/pkgs/trimmomatic-0.38-1/share/trimmomatic-0.38-1/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+## sample 2
+trimmomatic PE -trimlog trimlogfile_2 -summary statSummaryFile_2 S2_1.fastq S2_2.fastq S2_1_paired.fq.gz S2_1_unpaired.fq.gz S2_2_paired.fq.gz S2_2_unpaired.fq.gz ILLUMINACLIP:/home/marwa/miniconda3/pkgs/trimmomatic-0.38-1/share/trimmomatic-0.38-1/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+## sample 3
+trimmomatic PE -trimlog trimlogfile_3 -summary statSummaryFile_3 S3_1.fastq S3_2.fastq S3_1_paired.fq.gz S3_1_unpaired.fq.gz S3_2_paired.fq.gz S3_2_unpaired.fq.gz ILLUMINACLIP:/home/marwa/miniconda3/pkgs/trimmomatic-0.38-1/share/trimmomatic-0.38-1/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+## sample 4
+trimmomatic PE -trimlog trimlogfile_4 -summary statSummaryFile_4 S4_1.fastq S4_2.fastq S4_1_paired.fq.gz S4_1_unpaired.fq.gz S4_2_paired.fq.gz S4_2_unpaired.fq.gz ILLUMINACLIP:/home/marwa/miniconda3/pkgs/trimmomatic-0.38-1/share/trimmomatic-0.38-1/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+## sample 5
+trimmomatic PE -trimlog trimlogfile_5 -summary statSummaryFile_5 S5_1.fastq S5_2.fastq S5_1_paired.fq.gz S5_1_unpaired.fq.gz S5_2_paired.fq.gz S5_2_unpaired.fq.gz ILLUMINACLIP:/home/marwa/miniconda3/pkgs/trimmomatic-0.38-1/share/trimmomatic-0.38-1/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+
+### data of mild trimming sample 1 unshuffled
+#Input Read Pairs: 1000000
+#Both Surviving Reads: 986686
+#Both Surviving Read Percent: 98.67
+#Forward Only Surviving Reads: 10068
+#Forward Only Surviving Read Percent: 1.01
+#Reverse Only Surviving Reads: 2675
+#Reverse Only Surviving Read Percent: 0.27
+#Dropped Reads: 571
+#Dropped Read Percent: 0.06
+################################################
+
+### Aggressive trimming for shuffled samples (change MINLEN)
+
+## sample 1
+trimmomatic PE -trimlog trimlogfile_agg_1 -summary statSummaryFile_agg_1 SS1_1.fastq SS1_2.fastq SS1_1_paired_agg.fq.gz SS1_1_unpaired_agg.fq.gz SS1_2_paired_agg.fq.gz SS1_2_unpaired_agg.fq.gz ILLUMINACLIP:/home/marwa/miniconda3/pkgs/trimmomatic-0.38-1/share/trimmomatic-0.38-1/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:40
+## sample 2
+trimmomatic PE -trimlog trimlogfile_agg_2 -summary statSummaryFile_agg_2 SS2_1.fastq SS2_2.fastq SS2_1_paired_agg.fq.gz SS2_1_unpaired_agg.fq.gz SS2_2_paired_agg.fq.gz SS2_2_unpaired_agg.fq.gz ILLUMINACLIP:/home/marwa/miniconda3/pkgs/trimmomatic-0.38-1/share/trimmomatic-0.38-1/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:40
+## sample 3
+trimmomatic PE -trimlog trimlogfile_agg_3 -summary statSummaryFile_agg_3 SS3_1.fastq SS3_2.fastq SS3_1_paired_agg.fq.gz SS3_1_unpaired_agg.fq.gz SS3_2_paired_agg.fq.gz SS3_2_unpaired_agg.fq.gz ILLUMINACLIP:/home/marwa/miniconda3/pkgs/trimmomatic-0.38-1/share/trimmomatic-0.38-1/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:40
+## sample 4
+trimmomatic PE -trimlog trimlogfile_agg_4 -summary statSummaryFile_agg_4 SS4_1.fastq SS4_2.fastq SS4_1_paired_agg.fq.gz SS4_1_unpaired_agg.fq.gz SS4_2_paired_agg.fq.gz SS4_2_unpaired_agg.fq.gz ILLUMINACLIP:/home/marwa/miniconda3/pkgs/trimmomatic-0.38-1/share/trimmomatic-0.38-1/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:40
+## sample 5
+trimmomatic PE -trimlog trimlogfile_agg_5 -summary statSummaryFile_agg_5 SS5_1.fastq SS5_2.fastq SS5_1_paired_agg.fq.gz SS5_1_unpaired_agg.fq.gz SS5_2_paired_agg.fq.gz SS5_2_unpaired_agg.fq.gz ILLUMINACLIP:/home/marwa/miniconda3/pkgs/trimmomatic-0.38-1/share/trimmomatic-0.38-1/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:40
+
+### data of aggressive trimming sample 1 shuffled
+#Input Read Pairs: 1000000
+#Both Surviving Reads: 986086
+#Both Surviving Read Percent: 98.61
+#Forward Only Surviving Reads: 10109
+#Forward Only Surviving Read Percent: 1.01
+#Reverse Only Surviving Reads: 3095
+#Reverse Only Surviving Read Percent: 0.31
+#Dropped Reads: 710
+#Dropped Read Percent: 0.07
