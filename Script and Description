@@ -230,9 +230,4 @@ R1="$HOME/workdir2/SS5_1_paired_agg.fq.gz"
 R2="$HOME/workdir2/SS5_2_paired_agg.fq.gz"
 hisat2 -p 1 -x hisatIndex/chr22_with_ERCC92 --dta --rna-strandness RF -1 $R1 -2 $R2 -S SS5.sam
 
-
-source activate ngs1
-conda install -c bioconda hisat2 
- 
-source activate ngs1
-conda install -c bioconda hisat2 
+==================================================================================================
